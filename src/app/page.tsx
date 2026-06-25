@@ -173,7 +173,7 @@ export default function ClientPortalPage() {
                                 <div className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl group hover:bg-white/10 cursor-pointer transition-colors">
                                     <div>
                                         <div className="text-sm font-medium text-white mb-1">Data Architecture Topology</div>
-                                        <div className="text-xs text-white/50">Technical Spec • PRISM Integration</div>
+                                        <div className="text-xs text-white/50">Technical Spec • System Integration</div>
                                     </div>
                                     <ArrowUpRight className="w-4 h-4 text-[#7B61FF] opacity-50 group-hover:opacity-100" />
                                 </div>
