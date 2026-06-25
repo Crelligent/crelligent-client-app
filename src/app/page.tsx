@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Sidebar } from '@/components/layout/Sidebar'
-import { Wallet, Plus, CreditCard, Activity, ArrowUpRight, ShieldCheck, MapPin, Server, BarChart2, Search, Bell, AlertTriangle, TrendingUp, CheckSquare, Target } from 'lucide-react'
+import { Wallet, Plus, CreditCard, Activity, ArrowUpRight, ShieldCheck, MapPin, Server, BarChart2, Search, Bell, AlertTriangle, TrendingUp, CheckSquare, Target, FileText } from 'lucide-react'
 import {
     Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip
