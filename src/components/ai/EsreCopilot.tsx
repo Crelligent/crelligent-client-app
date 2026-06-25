@@ -12,9 +12,9 @@ export function EsreCopilot() {
             {!isOpen && (
                 <button 
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-6 right-6 z-50 group w-14 h-14 bg-gradient-to-br from-[#7B61FF] to-[#38BDF8] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(123,97,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95"
+                    className="fixed bottom-6 right-6 z-50 group w-14 h-14 bg-white/5 border border-white/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(123,97,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-white/10 p-2.5"
                 >
-                    <Sparkles className="w-6 h-6 text-white" />
+                    <img src="/logo.png" alt="ESRE Co-Pilot" className="w-full h-full object-contain" />
                 </button>
             )}
 
