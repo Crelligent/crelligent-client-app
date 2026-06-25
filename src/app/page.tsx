@@ -181,13 +181,11 @@ export default function ClientPortalPage() {
                         <div className="glass-card rounded-2xl p-6 flex flex-col">
                             <h3 className="text-sm font-medium text-white mb-6">Top Identified Bottlenecks</h3>
                             <div className="space-y-4 flex-1">
-                                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl relative overflow-hidden">
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-500/50" />
+                                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
                                     <div className="text-xs font-mono uppercase tracking-widest text-red-400 mb-2">Behavioural Constraint</div>
                                     <p className="text-sm text-white/80 leading-relaxed">Siloed data hoarding between procurement and last-mile teams prevents algorithmic routing.</p>
                                 </div>
-                                <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl relative overflow-hidden">
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500/50" />
+                                <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">
                                     <div className="text-xs font-mono uppercase tracking-widest text-orange-400 mb-2">Governance Failure</div>
                                     <p className="text-sm text-white/80 leading-relaxed">Over-engineered approval matrices delaying route adjustments by 48 hours.</p>
                                 </div>
