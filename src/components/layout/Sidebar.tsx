@@ -33,7 +33,7 @@ export function Sidebar() {
     ]
 
     return (
-        <aside className="w-64 border-r border-white/10 bg-[#050505] h-screen flex flex-col fixed left-0 top-0 overflow-y-auto print:hidden z-50">
+        <aside className="w-64 border-r border-white/10 bg-[#050505] h-screen flex-shrink-0 flex flex-col overflow-y-auto print:hidden">
             <div className="h-16 flex items-center px-6 border-b border-white/10 shrink-0 sticky top-0 bg-[#050505]">
                 <span className="text-lg font-semibold tracking-tight">Crelligent</span>
                 <span className="text-xs font-light text-[#7B61FF] ml-2">Client Portal</span>
