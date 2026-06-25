@@ -24,8 +24,8 @@ export function EsreCopilot() {
                 {/* Header */}
                 <div className="h-16 border-b border-white/10 px-5 flex items-center justify-between shrink-0 bg-white/[0.02]">
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded bg-gradient-to-br from-[#7B61FF]/20 to-[#38BDF8]/20 border border-[#7B61FF]/30 flex items-center justify-center">
-                            <Cpu className="w-4 h-4 text-[#38BDF8]" />
+                        <div className="w-8 h-8 rounded bg-white/5 border border-[#7B61FF]/30 flex items-center justify-center p-1 shrink-0">
+                            <img src="/logo.png" alt="Crelligent AI" className="w-full h-full object-contain" />
                         </div>
                         <div>
                             <div className="text-sm font-semibold text-white flex items-center gap-2">
@@ -46,8 +46,8 @@ export function EsreCopilot() {
                 <div className="flex-1 overflow-y-auto p-5 space-y-6">
                     {/* Welcome Message */}
                     <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                            <Sparkles className="w-4 h-4 text-[#7B61FF]" />
+                        <div className="w-8 h-8 rounded bg-white/5 border border-[#7B61FF]/20 flex items-center justify-center shrink-0 p-1.5">
+                            <img src="/logo.png" alt="Crelligent" className="w-full h-full object-contain" />
                         </div>
                         <div className="space-y-2">
                             <div className="text-sm text-white/90">
@@ -92,8 +92,8 @@ export function EsreCopilot() {
 
                     {/* AI Reply with Data Card */}
                     <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                            <Sparkles className="w-4 h-4 text-[#7B61FF]" />
+                        <div className="w-8 h-8 rounded bg-white/5 border border-[#7B61FF]/20 flex items-center justify-center shrink-0 p-1.5">
+                            <img src="/logo.png" alt="Crelligent" className="w-full h-full object-contain" />
                         </div>
                         <div className="space-y-3 w-full">
                             <div className="text-sm text-white/90">
