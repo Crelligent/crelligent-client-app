@@ -9,6 +9,9 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-display' })
 export const metadata: Metadata = {
   title: 'Client Portal | Crelligent',
   description: 'Executive Command Center for ESRE™ Diagnostics and Implementation',
+  icons: {
+    icon: '/logo.png',
+  },
 }
 
 export default function RootLayout({

@@ -20,7 +20,9 @@ import {
     Archive,
     Bell,
     KeyRound,
-    Sparkles
+    Sparkles,
+    Layers,
+    Network
 } from 'lucide-react'
 
 export function Sidebar() {
@@ -58,11 +60,13 @@ export function Sidebar() {
                 { name: 'Market Benchmarks', href: '/benchmarks', icon: BarChart2, color: 'text-[#FFB020]' },
                 { name: 'Data Feeds', href: '/feeds', icon: Rss, color: 'text-pink-400' },
                 { name: 'Reports Archive', href: '/reports', icon: Archive, color: 'text-purple-400' },
+                { name: 'Engine Architecture', href: '/engine', icon: Layers, color: 'text-indigo-400' },
             ]
         },
         {
             title: 'System',
             items: [
+                { name: 'Integrations', href: '/integrations', icon: Network, color: 'text-rose-400' },
                 { name: 'Notifications', href: '/notifications', icon: Bell, color: 'text-slate-400' },
                 { name: 'API Keys', href: '/api-keys', icon: KeyRound, color: 'text-slate-400' },
                 { name: 'Settings', href: '/settings', icon: Settings, color: 'text-slate-400' },
