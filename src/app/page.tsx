@@ -32,8 +32,12 @@ export default function ClientPortalPage() {
                         .eq('id', session.user.id)
                         .single()
                     
-                    if (profile?.tenants?.name) {
-                        setTenantName(profile.tenants.name)
+                    if (profile?.tenants) {
+                        const tenantData = profile.tenants as any
+                        const name = Array.isArray(tenantData) ? tenantData[0]?.name : tenantData?.name
+                        if (name) {
+                            setTenantName(name)
+                        }
                     }
                 }
             } catch (error) {
