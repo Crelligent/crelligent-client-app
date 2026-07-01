@@ -1,15 +1,48 @@
-'use client'
-
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { PortalLayout } from '@/components/layout/PortalLayout'
-import { Wallet, Plus, CreditCard, Activity, ArrowUpRight, ShieldCheck, MapPin, Server, BarChart2, TrendingUp, CheckSquare, Target, FileText, Layers } from 'lucide-react'
+import { Wallet, Plus, CreditCard, Activity, ArrowUpRight, ShieldCheck, MapPin, Server, BarChart2, TrendingUp, CheckSquare, Target, FileText, Layers, Loader2, Database } from 'lucide-react'
 import {
     Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip
 } from 'recharts'
+import { createClient } from '@/utils/supabase/client'
 
 export default function ClientPortalPage() {
+    const supabase = createClient()
+    const [tenantName, setTenantName] = useState<string>('')
+    const [isLoading, setIsLoading] = useState(true)
+    const [isDemoMode, setIsDemoMode] = useState(false)
+
+    useEffect(() => {
+        // Check for ?demo=true in URL
+        if (typeof window !== 'undefined' && window.location.search.includes('demo=true')) {
+            setIsDemoMode(true)
+        }
+
+        async function fetchTenant() {
+            try {
+                const { data: { session } } = await supabase.auth.getSession()
+                if (session?.user) {
+                    const { data: profile } = await supabase
+                        .from('profiles')
+                        .select('tenant_id, tenants(name)')
+                        .eq('id', session.user.id)
+                        .single()
+                    
+                    if (profile?.tenants?.name) {
+                        setTenantName(profile.tenants.name)
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching tenant", error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchTenant()
+    }, [supabase])
+
     // 9 ESRE Capabilities
     const radarData = [
         { subject: 'Business Design', A: 85, fullMark: 100 },
@@ -36,6 +69,80 @@ export default function ClientPortalPage() {
         { q: 'Q1', score: 72 },
         { q: 'Q2', score: 78 },
     ]
+
+    if (isLoading) {
+        return (
+            <PortalLayout>
+                <div className="p-6 lg:p-8 max-w-7xl mx-auto flex items-center justify-center h-full">
+                    <Loader2 className="w-8 h-8 text-[#7B61FF] animate-spin" />
+                </div>
+            </PortalLayout>
+        )
+    }
+
+    const isDemoAccount = isDemoMode || tenantName === 'Apex Logistics'
+
+    // Empty State for New Clients
+    if (!isDemoAccount) {
+        return (
+            <PortalLayout>
+                <div className="p-6 lg:p-8 max-w-7xl mx-auto h-full flex flex-col">
+                    <header className="mb-8">
+                        <div className="text-xs font-mono uppercase tracking-widest text-[#7B61FF] mb-2">Executive Command Center</div>
+                        <h1 className="text-3xl font-light tracking-tight text-white mb-1 flex items-center gap-4">
+                            {tenantName} 
+                            <span className="px-2 py-0.5 bg-[#FFB020]/10 border border-[#FFB020]/20 rounded text-[#FFB020] text-[10px] font-mono uppercase tracking-widest flex items-center gap-1">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#FFB020] animate-pulse"/> Initializing
+                            </span>
+                        </h1>
+                        <p className="text-white/50 text-sm">ESRE™ Diagnostic & Implementation Portal</p>
+                    </header>
+
+                    <div className="flex-1 flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 relative">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[#7B61FF]/20 to-[#38BDF8]/20 blur-xl rounded-full" />
+                            <Database className="w-8 h-8 text-[#38BDF8] relative z-10" />
+                        </div>
+                        <h2 className="text-2xl font-light text-white mb-3">Awaiting Telemetry Ingestion</h2>
+                        <p className="text-white/50 text-sm leading-relaxed mb-8">
+                            Your secure sandbox has been provisioned. Our data engineering team is currently mapping your enterprise APIs and integrating your legacy systems into the ESRE™ Engine.
+                        </p>
+
+                        <div className="w-full space-y-4 text-left">
+                            <div className="p-4 bg-white/5 border border-white/10 rounded-xl flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-full bg-[#00B67A]/20 flex items-center justify-center shrink-0">
+                                    <CheckSquare className="w-4 h-4 text-[#00B67A]" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-medium text-white">Cryptographic Sandbox Provisioned</div>
+                                    <div className="text-xs text-white/40">Secure multi-tenant isolation established.</div>
+                                </div>
+                            </div>
+                            <div className="p-4 bg-white/5 border border-[#38BDF8]/30 rounded-xl flex items-center gap-4 relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#38BDF8]/10 to-transparent w-1/2 animate-pulse" />
+                                <div className="w-8 h-8 rounded-full bg-[#38BDF8]/20 flex items-center justify-center shrink-0 relative z-10">
+                                    <Loader2 className="w-4 h-4 text-[#38BDF8] animate-spin" />
+                                </div>
+                                <div className="relative z-10">
+                                    <div className="text-sm font-medium text-white">Ingesting Enterprise Telemetry</div>
+                                    <div className="text-xs text-[#38BDF8]">Mapping external API endpoints...</div>
+                                </div>
+                            </div>
+                            <div className="p-4 bg-white/5 border border-white/10 rounded-xl flex items-center gap-4 opacity-50">
+                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                    <Activity className="w-4 h-4 text-white/30" />
+                                </div>
+                                <div>
+                                    <div className="text-sm font-medium text-white">ESRE™ Diagnostic Benchmarking</div>
+                                    <div className="text-xs text-white/40">Pending initial data snapshot.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </PortalLayout>
+        )
+    }
 
     return (
         <PortalLayout>

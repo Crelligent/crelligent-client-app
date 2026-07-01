@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
-import { EsreCopilot } from '@/components/ai/EsreCopilot'
+
+import { GlobalCopilot } from '@/components/layout/GlobalCopilot'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-display' })
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body className="antialiased min-h-screen bg-[#050505] text-white">
         {children}
-        <EsreCopilot />
+        <GlobalCopilot />
       </body>
     </html>
   )

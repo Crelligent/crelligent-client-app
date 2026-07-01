@@ -100,7 +100,7 @@ export default function OnboardingPage() {
                     <button 
                         onClick={() => router.push('/initialize')}
                         disabled={selectedSystems.length === 0}
-                        className={`flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-medium transition-all ${
+                        className={`flex items-center justify-center gap-2 w-80 py-4 rounded-xl text-sm font-medium transition-all ${
                             selectedSystems.length > 0 
                             ? 'bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.2)]' 
                             : 'bg-white/5 text-white/30 cursor-not-allowed border border-white/10'
@@ -109,11 +109,26 @@ export default function OnboardingPage() {
                         Commence Intelligence Ingestion
                         <ArrowRight className="w-4 h-4" />
                     </button>
+                    
                     {selectedSystems.length === 0 && (
                         <p className="text-[10px] text-white/30 font-mono uppercase tracking-widest mt-4">
                             Select at least one system to continue
                         </p>
                     )}
+
+                    <div className="mt-8 flex flex-col items-center">
+                        <div className="flex items-center gap-4 mb-4 w-80">
+                            <div className="h-[1px] flex-1 bg-white/10" />
+                            <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">Or</span>
+                            <div className="h-[1px] flex-1 bg-white/10" />
+                        </div>
+                        <button 
+                            onClick={() => router.push('/?demo=true')}
+                            className="flex items-center justify-center gap-2 w-80 py-4 rounded-xl text-sm font-medium text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+                        >
+                            Explore Live Demo Environment
+                        </button>
+                    </div>
                 </motion.div>
 
             </div>
