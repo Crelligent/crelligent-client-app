@@ -41,6 +41,8 @@ export function Sidebar() {
         {
             title: 'Diagnostics',
             items: [
+                { name: 'ESRE Lens', href: '/diagnostics/esre-lens', icon: Network, color: 'text-blue-400' },
+                { name: 'Document Intelligence', href: '/diagnostics/document-intelligence', icon: Sparkles, color: 'text-emerald-400' },
                 { name: 'Risk Register', href: '/risk', icon: AlertTriangle, color: 'text-orange-400' },
                 { name: 'Bottleneck Tracker', href: '/bottlenecks', icon: Activity, color: 'text-red-400' },
                 { name: 'Simulation Lab', href: '/simulation', icon: FlaskConical, color: 'text-amber-400' },
