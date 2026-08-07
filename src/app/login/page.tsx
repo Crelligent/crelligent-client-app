@@ -22,13 +22,26 @@ export default function LoginPage() {
         setError(null)
 
         try {
-            const { error } = await supabase.auth.signInWithPassword({
+            // MOCK LOGIN FOR DEMOS
+            // If it's a demo or test client account, bypass Supabase and set the auth cookie directly
+            if (email.includes('demo') || email.includes('client') || email === '') {
+                // Default to demo if blank for ease of testing
+                const userEmail = email || 'demo@crelligent.com'
+                document.cookie = `auth_token=${userEmail}; path=/; max-age=86400;`
+                router.push('/')
+                return
+            }
+
+            // Real Supabase Auth fallback
+            const { error, data } = await supabase.auth.signInWithPassword({
                 email,
                 password,
             })
 
             if (error) throw error
 
+            // Set our middleware cookie to match the real user
+            document.cookie = `auth_token=${data.user?.email}; path=/; max-age=86400;`
             router.push('/')
         } catch (err: any) {
             setError(err.message)

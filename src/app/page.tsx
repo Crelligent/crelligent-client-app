@@ -17,9 +17,13 @@ export default function ClientPortalPage() {
     const [isDemoMode, setIsDemoMode] = useState(false)
 
     useEffect(() => {
-        // Check for ?demo=true in URL
-        if (typeof window !== 'undefined' && window.location.search.includes('demo=true')) {
-            setIsDemoMode(true)
+        // Check for ?demo=true in URL or demo auth_token cookie
+        if (typeof window !== 'undefined') {
+            const isDemoUrl = window.location.search.includes('demo=true')
+            const isDemoCookie = document.cookie.includes('auth_token=demo')
+            if (isDemoUrl || isDemoCookie) {
+                setIsDemoMode(true)
+            }
         }
 
         async function fetchTenant() {
