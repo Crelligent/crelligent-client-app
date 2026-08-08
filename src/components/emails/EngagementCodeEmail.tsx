@@ -28,26 +28,15 @@ export const EngagementCodeEmail = ({
       <Preview>Your Crelligent ESRE OS Engagement Code is ready.</Preview>
       <Body style={main}>
         <Container style={container}>
-          {/* Animated Hero Section */}
-          <Section style={heroSection}>
+          <Section style={header}>
             <Img
-              src="https://media.giphy.com/media/l41lW1sE7AUMQ5B7y/giphy.gif"
-              width="520"
-              height="240"
-              alt="ESRE OS Initialization"
-              style={heroImage}
+              src="https://client.crelligent.com/logo.png"
+              width="40"
+              height="40"
+              alt="Crelligent"
+              style={logo}
             />
-            {/* Dimmed Logo Overlay (Top Right) */}
-            <div style={heroOverlay}>
-              <Img
-                src="https://client.crelligent.com/logo.png"
-                width="24"
-                height="24"
-                alt="Crelligent"
-                style={dimmedLogo}
-              />
-              <Text style={dimmedBrandName}>Crelligent</Text>
-            </div>
+            <Text style={brandName}>Crelligent</Text>
           </Section>
           
           <Heading style={h1}>Enterprise Access Provisioned</Heading>
@@ -97,6 +86,24 @@ const container = {
   backgroundColor: '#0a0a0a',
   border: '1px solid #1a1a1a',
   borderRadius: '8px',
+};
+
+const header = {
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '40px',
+};
+
+const logo = {
+  marginRight: '12px',
+};
+
+const brandName = {
+  color: '#ffffff',
+  fontSize: '20px',
+  fontWeight: '500',
+  letterSpacing: '0.05em',
+  margin: '0',
 };
 
 const h1 = {
@@ -166,38 +173,4 @@ const footer = {
   textAlign: 'center' as const,
   borderTop: '1px solid #1a1a1a',
   paddingTop: '24px',
-};
-
-const heroSection = {
-  marginBottom: '32px',
-  borderRadius: '6px',
-  overflow: 'hidden',
-  position: 'relative' as const,
-};
-
-const heroImage = {
-  width: '100%',
-  height: 'auto',
-  display: 'block',
-};
-
-const heroOverlay = {
-  position: 'absolute' as const,
-  top: '24px',
-  right: '24px',
-  display: 'flex',
-  alignItems: 'center',
-  opacity: 0.5,
-};
-
-const dimmedLogo = {
-  marginRight: '8px',
-};
-
-const dimmedBrandName = {
-  color: '#ffffff',
-  fontSize: '14px',
-  fontWeight: '500',
-  letterSpacing: '0.05em',
-  margin: '0',
 };
