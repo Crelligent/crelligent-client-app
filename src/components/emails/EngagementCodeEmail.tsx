@@ -38,6 +38,17 @@ export const EngagementCodeEmail = ({
             />
             <Text style={brandName}>Crelligent</Text>
           </Section>
+
+          {/* Hero Image Placeholder */}
+          <Section style={heroSection}>
+            <Img
+              src="https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+              width="520"
+              height="240"
+              alt="Hero Placeholder"
+              style={heroImage}
+            />
+          </Section>
           
           <Heading style={h1}>Enterprise Access Provisioned</Heading>
           
@@ -173,4 +184,17 @@ const footer = {
   textAlign: 'center' as const,
   borderTop: '1px solid #1a1a1a',
   paddingTop: '24px',
+};
+
+const heroSection = {
+  marginBottom: '32px',
+  borderRadius: '6px',
+  overflow: 'hidden',
+};
+
+const heroImage = {
+  width: '100%',
+  height: 'auto',
+  borderRadius: '6px',
+  display: 'block',
 };
