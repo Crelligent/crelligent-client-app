@@ -63,6 +63,9 @@ export default function SignupPage() {
                 await supabase.from('profiles').insert([
                     { id: authData.user.id, tenant_id: codeData.tenant_id, full_name: fullName, role: 'executive' }
                 ])
+                
+                // Set our middleware cookie to match the real user so they aren't bounced back to login
+                document.cookie = `auth_token=${authData.user.email}; path=/; max-age=86400;`
             }
 
             router.push('/onboarding')
