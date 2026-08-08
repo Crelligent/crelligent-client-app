@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.16",
+    "@react-email/components": "^1.0.12",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.108.2",
     "ai": "^7.0.32",
@@ -20,6 +21,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "recharts": "^3.9.0",
+    "resend": "^6.18.1",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
