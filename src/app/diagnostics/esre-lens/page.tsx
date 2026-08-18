@@ -120,13 +120,13 @@ export default function LensIntakePage() {
                     <div key={key} className="p-4 rounded-lg bg-white/5 border border-white/10 flex flex-col">
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="text-sm font-medium text-white capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</h4>
-                        <span className={`px-2 py-1 rounded text-xs font-mono ${data.score < 5 ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'}`}>
+                        <span className={`px-2 py-1 rounded text-xs font-mono ${data.score < 5 ? 'bg-[var(--color-red)]-500/20 text-[var(--color-red)]-400' : 'bg-emerald-500/20 text-emerald-400'}`}>
                           {data.score}/10
                         </span>
                       </div>
                       <p className="text-xs text-white/60 mb-3 flex-1">{data.finding}</p>
                       {data.score < 5 && (
-                        <div className="flex items-center gap-1 text-[10px] text-red-400 mt-2">
+                        <div className="flex items-center gap-1 text-[10px] text-[var(--color-red)]-400 mt-2">
                           <AlertTriangle className="w-3 h-3" /> Structural Vulnerability Detected
                         </div>
                       )}

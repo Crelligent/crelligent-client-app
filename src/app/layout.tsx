@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter, Outfit } from 'next/font/google'
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 import { GlobalCopilot } from '@/components/layout/GlobalCopilot'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-display' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' })
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: 'Client Portal | Crelligent',
-  description: 'Executive Command Center for ESRE™ Diagnostics and Implementation',
+  title: 'ESRE OS Platform | Crelligent',
+  description: 'The operating system for the African enterprise.',
   icons: {
     icon: '/logo.png',
   },
@@ -21,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
-      <body className="antialiased min-h-screen bg-[#050505] text-white">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)]">
         {children}
         <GlobalCopilot />
       </body>

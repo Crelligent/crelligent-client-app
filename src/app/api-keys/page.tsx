@@ -59,7 +59,7 @@ export default function ApiKeysPage() {
                                         <td className="py-4 text-xs text-white/50">{key.created}</td>
                                         <td className="py-4 text-xs text-white/50">{key.lastUsed}</td>
                                         <td className="py-4 pr-6 text-right">
-                                            <button className="text-xs text-red-400 hover:text-red-300 transition-colors">Revoke</button>
+                                            <button className="text-xs text-[var(--color-red)]-400 hover:text-[var(--color-red)]-300 transition-colors">Revoke</button>
                                         </td>
                                     </tr>
                                 ))}

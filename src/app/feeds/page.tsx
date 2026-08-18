@@ -51,7 +51,7 @@ export default function DataFeedsPage() {
                     className="flex-1 bg-[#020202] border border-white/10 rounded-2xl p-6 overflow-hidden font-mono text-xs flex flex-col"
                 >
                     <div className="flex items-center gap-2 text-white/30 mb-6 pb-4 border-b border-white/10">
-                        <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
+                        <div className="w-3 h-3 rounded-full bg-[var(--color-red)]-500/20 border border-[var(--color-red)]-500/50" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
                         <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                         <span className="ml-2 uppercase tracking-widest">engine_console_tty1</span>

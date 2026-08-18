@@ -70,7 +70,7 @@ const bottlenecks = [
 ]
 
 const severityColors: Record<string, string> = {
-    'Critical': 'text-red-400 bg-red-500/10 border-red-500/20',
+    'Critical': 'text-[var(--color-red)]-400 bg-[var(--color-red)]-500/10 border-[var(--color-red)]-500/20',
     'High': 'text-orange-400 bg-orange-500/10 border-orange-500/20',
     'Moderate': 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
 }
@@ -94,7 +94,7 @@ export default function BottleneckTrackerPage() {
                 {/* Header */}
                 <header className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 shrink-0">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-                        <div className="text-xs font-mono uppercase tracking-widest text-red-400 mb-2 flex items-center gap-2">
+                        <div className="text-xs font-mono uppercase tracking-widest text-[var(--color-red)]-400 mb-2 flex items-center gap-2">
                             <AlertTriangle className="w-3.5 h-3.5" /> Diagnostics Protocol
                         </div>
                         <h1 className="text-3xl font-light tracking-tight text-white mb-1">
@@ -104,7 +104,7 @@ export default function BottleneckTrackerPage() {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-                        <button className="px-4 py-2 bg-red-500/10 text-red-400 hover:bg-red-500/20 border border-red-500/30 rounded-lg text-sm transition-colors flex items-center gap-2 font-medium">
+                        <button className="px-4 py-2 bg-[var(--color-red)]-500/10 text-[var(--color-red)]-400 hover:bg-[var(--color-red)]-500/20 border border-[var(--color-red)]-500/30 rounded-lg text-sm transition-colors flex items-center gap-2 font-medium">
                             <Activity className="w-4 h-4" /> Generate Diagnostic Report
                         </button>
                     </motion.div>
@@ -135,11 +135,11 @@ export default function BottleneckTrackerPage() {
                     >
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-xs font-mono uppercase tracking-widest text-white/70">System Friction Score</span>
-                            <Activity className="w-4 h-4 text-red-400" />
+                            <Activity className="w-4 h-4 text-[var(--color-red)]-400" />
                         </div>
                         <div className="mt-auto">
-                            <div className="text-4xl font-light text-red-400 mb-1 flex items-baseline gap-2">
-                                High <span className="text-lg text-red-400/50">Degradation</span>
+                            <div className="text-4xl font-light text-[var(--color-red)]-400 mb-1 flex items-baseline gap-2">
+                                High <span className="text-lg text-[var(--color-red)]-400/50">Degradation</span>
                             </div>
                             <div className="text-[10px] text-white/40 border-t border-white/10 pt-3">
                                 Affecting 3 of 9 ESRE Dimensions
@@ -153,11 +153,11 @@ export default function BottleneckTrackerPage() {
                         <div className="absolute inset-0 bg-gradient-to-bl from-red-500/10 to-transparent opacity-50" />
                         <div className="relative z-10 flex items-center justify-between mb-4">
                             <span className="text-xs font-mono uppercase tracking-widest text-white/70">Estimated Leakage</span>
-                            <TrendingDown className="w-4 h-4 text-red-400" />
+                            <TrendingDown className="w-4 h-4 text-[var(--color-red)]-400" />
                         </div>
                         <div className="relative z-10 mt-auto">
-                            <div className="text-4xl font-light text-red-400 mb-1">
-                                ₦2.4<span className="text-lg text-red-400/50">M</span>
+                            <div className="text-4xl font-light text-[var(--color-red)]-400 mb-1">
+                                ₦2.4<span className="text-lg text-[var(--color-red)]-400/50">M</span>
                             </div>
                             <div className="text-[10px] text-white/40 border-t border-white/10 pt-3">
                                 Weekly Operational Waste
@@ -203,7 +203,7 @@ export default function BottleneckTrackerPage() {
                                             <div className={`px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border ${statusColors[btn.status]}`}>
                                                 {btn.status}
                                             </div>
-                                            <div className="text-xs font-bold text-red-400">Leakage: {btn.leakage}</div>
+                                            <div className="text-xs font-bold text-[var(--color-red)]-400">Leakage: {btn.leakage}</div>
                                         </div>
                                     </div>
                                 </div>

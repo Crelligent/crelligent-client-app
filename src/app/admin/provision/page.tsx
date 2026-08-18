@@ -85,7 +85,7 @@ export default function AdminProvisionPage() {
             </div>
 
             {status === 'error' && (
-              <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-start gap-3 text-red-400 text-sm">
+              <div className="p-4 rounded-xl bg-[var(--color-red)]-500/10 border border-[var(--color-red)]-500/20 flex items-start gap-3 text-[var(--color-red)]-400 text-sm">
                 <ShieldAlert className="w-5 h-5 shrink-0" />
                 <p>{message}</p>
               </div>

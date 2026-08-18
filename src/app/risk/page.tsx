@@ -68,8 +68,8 @@ const impactLevels = ['Critical', 'High', 'Medium', 'Low']
 const likelihoodLevels = ['High', 'Medium', 'Low']
 
 const matrixCellColor = (impact: string, likelihood: string) => {
-    if (impact === 'Critical') return 'bg-red-500/20 border-red-500/30'
-    if (impact === 'High' && likelihood === 'High') return 'bg-red-500/20 border-red-500/30'
+    if (impact === 'Critical') return 'bg-[var(--color-red)]-500/20 border-[var(--color-red)]-500/30'
+    if (impact === 'High' && likelihood === 'High') return 'bg-[var(--color-red)]-500/20 border-[var(--color-red)]-500/30'
     if (impact === 'High' && likelihood === 'Medium') return 'bg-orange-500/20 border-orange-500/30'
     if (impact === 'Medium' && likelihood === 'High') return 'bg-orange-500/20 border-orange-500/30'
     if (impact === 'Low' && likelihood === 'Low') return 'bg-[#00B67A]/10 border-[#00B67A]/20'
@@ -175,7 +175,7 @@ export default function RiskRegisterPage() {
                                         <tr key={risk.id} className="border-b border-white/5 last:border-0 hover:bg-white/[0.03] transition-colors group cursor-pointer">
                                             <td className="py-4 pl-6">
                                                 <div className="flex items-start gap-3">
-                                                    <div className={`mt-1 w-2 h-2 rounded-full shrink-0 ${risk.impact === 'Critical' ? 'bg-red-500' : risk.impact === 'High' ? 'bg-orange-500' : 'bg-yellow-500'}`} />
+                                                    <div className={`mt-1 w-2 h-2 rounded-full shrink-0 ${risk.impact === 'Critical' ? 'bg-[var(--color-red)]-500' : risk.impact === 'High' ? 'bg-orange-500' : 'bg-yellow-500'}`} />
                                                     <div>
                                                         <div className="text-white/90 font-medium mb-1">{risk.title}</div>
                                                         <div className="text-xs text-white/40 line-clamp-1 max-w-sm">{risk.desc}</div>
@@ -194,7 +194,7 @@ export default function RiskRegisterPage() {
                                             <td className="py-4 pr-6 align-top pt-5 text-right">
                                                 <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border ${
                                                     risk.status === 'Mitigating' ? 'text-[#00B67A] bg-[#00B67A]/10 border-[#00B67A]/20' : 
-                                                    risk.status === 'Escalated' ? 'text-red-400 bg-red-500/10 border-red-500/20' : 
+                                                    risk.status === 'Escalated' ? 'text-[var(--color-red)]-400 bg-[var(--color-red)]-500/10 border-[var(--color-red)]-500/20' : 
                                                     'text-blue-400 bg-blue-500/10 border-blue-500/20'
                                                 }`}>
                                                     {risk.status === 'Mitigating' && <ShieldCheck className="w-3 h-3" />}

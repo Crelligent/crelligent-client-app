@@ -22,13 +22,31 @@ import {
     KeyRound,
     Sparkles,
     Layers,
-    Network
+    Network,
+    Target,
+    GitMerge,
+    Shield,
+    Database,
+    Zap,
+    Briefcase
 } from 'lucide-react'
 
 export function Sidebar() {
     const pathname = usePathname()
 
     const navGroups = [
+        {
+            title: 'ESRE OS',
+            items: [
+                { name: 'OS Dashboard', href: '/dashboard', icon: LayoutDashboard, color: 'text-[var(--color-lime)]' },
+                { name: 'L1 Business Design', href: '/l1', icon: Target, color: 'text-[var(--color-teal)]' },
+                { name: 'L2 Operating Model', href: '/l2', icon: GitMerge, color: 'text-[var(--color-red)]' },
+                { name: 'L3 Technology', href: '/l3', icon: Zap, color: 'text-[var(--color-purple)]' },
+                { name: 'L4 Data & Intel', href: '/l4', icon: Database, color: 'text-blue-400' },
+                { name: 'L5 Governance', href: '/l5', icon: Shield, color: 'text-[var(--color-amber)]' },
+                { name: 'Consultant Portal', href: '/consultant', icon: Briefcase, color: 'text-emerald-400' },
+            ]
+        },
         {
             title: 'Executive Portal',
             items: [
@@ -44,8 +62,8 @@ export function Sidebar() {
                 { name: 'ESRE Lens', href: '/diagnostics/esre-lens', icon: Network, color: 'text-blue-400' },
                 { name: 'Document Intelligence', href: '/diagnostics/document-intelligence', icon: Sparkles, color: 'text-emerald-400' },
                 { name: 'Risk Register', href: '/risk', icon: AlertTriangle, color: 'text-orange-400' },
-                { name: 'Bottleneck Tracker', href: '/bottlenecks', icon: Activity, color: 'text-red-400' },
-                { name: 'Simulation Lab', href: '/simulation', icon: FlaskConical, color: 'text-amber-400' },
+                { name: 'Bottleneck Tracker', href: '/bottlenecks', icon: Activity, color: 'text-[var(--color-red)]-400' },
+                { name: 'Simulation Lab', href: '/simulation', icon: FlaskConical, color: 'text-[var(--color-amber)]-400' },
             ]
         },
         {
@@ -53,7 +71,7 @@ export function Sidebar() {
             items: [
                 { name: 'Operator Timeline', href: '/timeline', icon: MapPin, color: 'text-[#38BDF8]' },
                 { name: 'Milestone Tracker', href: '/milestones', icon: Milestone, color: 'text-emerald-400' },
-                { name: 'Deliverables', href: '/deliverables', icon: PackageCheck, color: 'text-teal-400' },
+                { name: 'Deliverables', href: '/deliverables', icon: PackageCheck, color: 'text-[var(--color-teal)]-400' },
             ]
         },
         {
@@ -61,7 +79,7 @@ export function Sidebar() {
             items: [
                 { name: 'Market Benchmarks', href: '/benchmarks', icon: BarChart2, color: 'text-[#FFB020]' },
                 { name: 'Data Feeds', href: '/feeds', icon: Rss, color: 'text-pink-400' },
-                { name: 'Reports Archive', href: '/reports', icon: Archive, color: 'text-purple-400' },
+                { name: 'Reports Archive', href: '/reports', icon: Archive, color: 'text-[var(--color-purple)]-400' },
                 { name: 'Engine Architecture', href: '/engine', icon: Layers, color: 'text-indigo-400' },
             ]
         },
@@ -77,11 +95,11 @@ export function Sidebar() {
     ]
 
     return (
-        <aside className="w-64 border-r border-white/10 bg-[#050505] h-screen flex-shrink-0 flex flex-col overflow-y-auto print:hidden">
-            <div className="h-16 flex items-center px-6 border-b border-white/10 shrink-0 sticky top-0 bg-[#050505] z-10">
+        <aside className="w-64 border-r border-white/10 bg-[#060D1A] h-screen flex-shrink-0 flex flex-col overflow-y-auto print:hidden">
+            <div className="h-16 flex items-center px-6 border-b border-white/10 shrink-0 sticky top-0 bg-[#060D1A] z-10">
                 <img src="/logo.png" alt="Crelligent" className="w-6 h-6 object-contain mr-2" />
                 <span className="text-lg font-semibold tracking-tight">Crelligent</span>
-                <span className="text-xs font-light text-[#7B61FF] ml-2">Client Portal</span>
+                <span className="text-xs font-light text-[#7B61FF] ml-2">ESRE OS</span>
             </div>
 
             <div className="flex-1 py-6 px-4 space-y-8">
@@ -100,8 +118,8 @@ export function Sidebar() {
                                         href={item.href}
                                         className={`flex items-center gap-3 px-2 py-2 rounded-lg text-[13px] tracking-wide font-light transition-colors ${
                                             isActive 
-                                                ? 'bg-white/5 text-white' 
-                                                : 'text-[#606060] hover:text-white hover:bg-white/5'
+                                                ? 'bg-[var(--color-lime)]/10 text-[var(--color-lime)] border-l-2 border-[var(--color-lime)] rounded-l-none pl-[6px]' 
+                                                : 'text-[#8A9DB8] hover:text-white hover:bg-white/5'
                                         }`}
                                     >
                                         <Icon className={`w-4 h-4 stroke-[1.5] transition ${item.color} ${isActive ? 'opacity-100' : 'opacity-50 group-hover:opacity-100'}`} />
@@ -121,14 +139,14 @@ export function Sidebar() {
                         <img src="/logo.png" alt="AI" className="w-full h-full object-contain" />
                     </div>
                     <div className="text-left">
-                        <div className="text-xs font-medium text-white">ESRE™ Co-Pilot</div>
+                        <div className="text-xs font-medium text-white">ESRE™ Engine</div>
                         <div className="text-[10px] text-white/40">Ask anything</div>
                     </div>
                     <Sparkles className="w-3 h-3 text-[#7B61FF] ml-auto opacity-50 group-hover:opacity-100 transition-opacity" />
                 </button>
             </div>
             
-            <div className="p-4 border-t border-white/10 shrink-0 sticky bottom-0 bg-[#050505]">
+            <div className="p-4 border-t border-white/10 shrink-0 sticky bottom-0 bg-[#060D1A]">
                 <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#7B61FF] to-[#38BDF8]" />
                     <div>

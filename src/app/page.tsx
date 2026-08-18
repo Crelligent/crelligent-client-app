@@ -279,8 +279,8 @@ export default function ClientPortalPage() {
                         <div className="glass-card rounded-2xl p-6 flex flex-col">
                             <h3 className="text-sm font-medium text-white mb-6">Top Identified Bottlenecks</h3>
                             <div className="space-y-4 flex-1">
-                                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-                                    <div className="text-xs font-mono uppercase tracking-widest text-red-400 mb-2">Behavioural Constraint</div>
+                                <div className="p-4 bg-[var(--color-red)]-500/10 border border-[var(--color-red)]-500/20 rounded-xl">
+                                    <div className="text-xs font-mono uppercase tracking-widest text-[var(--color-red)]-400 mb-2">Behavioural Constraint</div>
                                     <p className="text-sm text-white/80 leading-relaxed">Siloed data hoarding between procurement and last-mile teams prevents algorithmic routing.</p>
                                 </div>
                                 <div className="p-4 bg-orange-500/10 border border-orange-500/20 rounded-xl">

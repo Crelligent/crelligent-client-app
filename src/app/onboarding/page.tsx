@@ -2,135 +2,142 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Database, Server, HardDrive, Wifi, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Building, CheckCircle2, LayoutDashboard } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-const integrationCategories = [
-    {
-        title: 'Enterprise Resource Planning (ERP)',
-        icon: Database,
-        options: ['SAP S/4HANA', 'Oracle NetSuite', 'Microsoft Dynamics 365', 'Infor M3']
-    },
-    {
-        title: 'Customer Relationship Management (CRM)',
-        icon: HardDrive,
-        options: ['Salesforce', 'HubSpot', 'Zoho CRM', 'Custom Internal CRM']
-    },
-    {
-        title: 'Human Capital Management (HRIS)',
-        icon: Server,
-        options: ['Workday', 'BambooHR', 'Deel', 'Rippling']
-    },
-    {
-        title: 'Edge Telemetry & IoT',
-        icon: Wifi,
-        options: ['Crelligent Edge Nodes', 'Samsara Fleet', 'Geotab', 'AWS IoT Core']
-    }
-]
-
-export default function OnboardingPage() {
+export default function OnboardingWizard() {
     const router = useRouter()
-    const [selectedSystems, setSelectedSystems] = useState<string[]>([])
+    const [step, setStep] = useState(1)
+    const [companyName, setCompanyName] = useState('')
+    
+    const steps = [
+        { num: 1, title: 'Company Profile' },
+        { num: 2, title: 'L1 Business Design' },
+        { num: 3, title: 'L2 Core Processes' },
+        { num: 4, title: 'OS Initialization' }
+    ]
 
-    const toggleSystem = (system: string) => {
-        setSelectedSystems(prev => 
-            prev.includes(system) ? prev.filter(s => s !== system) : [...prev, system]
-        )
+    const handleNext = () => {
+        if (step < 4) setStep(step + 1)
+        else router.push('/dashboard')
     }
 
     return (
-        <div className="min-h-screen bg-[#020202] text-white flex flex-col pt-12 pb-24 px-6 md:px-12 relative overflow-hidden">
-            
+        <div className="min-h-screen bg-[#050505] text-white flex flex-col justify-center px-6 relative overflow-hidden">
             {/* Ambient Glow */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#7B61FF]/10 to-transparent blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[var(--color-teal)]/10 to-transparent blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto w-full relative z-10">
+            <div className="max-w-2xl mx-auto w-full relative z-10">
                 
-                <header className="mb-12 text-center">
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-                        <div className="text-xs font-mono uppercase tracking-widest text-[#38BDF8] mb-3">Phase 1: Architecture Mapping</div>
-                        <h1 className="text-4xl lg:text-5xl font-light tracking-tight text-white mb-4">System Configuration</h1>
-                        <p className="text-white/50 text-lg max-w-2xl mx-auto">
-                            Select the operational systems currently active in your enterprise. The ESRE Engine will generate ingestion protocols for these specific endpoints.
-                        </p>
-                    </motion.div>
-                </header>
-
-                <div className="space-y-12">
-                    {integrationCategories.map((category, catIdx) => (
-                        <motion.div 
-                            key={category.title}
-                            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                        >
-                            <h3 className="text-sm font-mono uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
-                                <category.icon className="w-4 h-4 text-[#7B61FF]" /> {category.title}
-                            </h3>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                {category.options.map(option => {
-                                    const isSelected = selectedSystems.includes(option)
-                                    return (
-                                        <div 
-                                            key={option}
-                                            onClick={() => toggleSystem(option)}
-                                            className={`cursor-pointer rounded-xl p-4 border transition-all duration-200 relative overflow-hidden group ${
-                                                isSelected 
-                                                ? 'bg-[#38BDF8]/10 border-[#38BDF8]/50 text-white' 
-                                                : 'bg-white/5 border-white/10 text-white/60 hover:bg-white/10 hover:border-white/20'
-                                            }`}
-                                        >
-                                            {isSelected && (
-                                                <motion.div layoutId="active-pill" className="absolute top-3 right-3 text-[#38BDF8]">
-                                                    <CheckCircle2 className="w-4 h-4" />
-                                                </motion.div>
-                                            )}
-                                            <div className="font-medium text-sm pr-6">{option}</div>
-                                        </div>
-                                    )
-                                })}
+                {/* Progress Bar */}
+                <div className="mb-16">
+                    <div className="flex justify-between mb-4 relative">
+                        <div className="absolute top-1/2 left-0 w-full h-[2px] bg-white/10 -z-10 -translate-y-1/2" />
+                        <div 
+                            className="absolute top-1/2 left-0 h-[2px] bg-[var(--color-lime)] shadow-[0_0_10px_rgba(0,201,133,0.8)] -z-10 -translate-y-1/2 transition-all duration-500" 
+                            style={{ width: `${((step - 1) / 3) * 100}%` }}
+                        />
+                        {steps.map(s => (
+                            <div key={s.num} className="flex flex-col items-center">
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                                    step >= s.num ? 'bg-[var(--color-lime)] text-[#050505] shadow-[0_0_15px_rgba(0,201,133,0.5)]' : 'bg-[#050505] border-2 border-white/10 text-white/40'
+                                }`}>
+                                    {step > s.num ? <CheckCircle2 className="w-5 h-5" /> : s.num}
+                                </div>
+                                <span className={`absolute mt-14 text-xs font-mono uppercase tracking-widest whitespace-nowrap ${
+                                    step >= s.num ? 'text-white/90' : 'text-white/30'
+                                }`}>
+                                    {s.title}
+                                </span>
                             </div>
-                        </motion.div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
-                <motion.div 
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-                    className="mt-16 flex flex-col items-center border-t border-white/10 pt-12"
-                >
-                    <button 
-                        onClick={() => router.push('/initialize')}
-                        disabled={selectedSystems.length === 0}
-                        className={`flex items-center justify-center gap-2 w-80 py-4 rounded-xl text-sm font-medium transition-all ${
-                            selectedSystems.length > 0 
-                            ? 'bg-white text-black hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.2)]' 
-                            : 'bg-white/5 text-white/30 cursor-not-allowed border border-white/10'
-                        }`}
-                    >
-                        Commence Intelligence Ingestion
-                        <ArrowRight className="w-4 h-4" />
-                    </button>
+                {/* Step Content */}
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-12 shadow-2xl mt-20 min-h-[450px] flex flex-col relative overflow-hidden">
                     
-                    {selectedSystems.length === 0 && (
-                        <p className="text-[10px] text-white/30 font-mono uppercase tracking-widest mt-4">
-                            Select at least one system to continue
-                        </p>
+                    {step === 1 && (
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1">
+                            <h2 className="text-3xl font-display font-medium mb-3 text-white">Welcome to ESRE OS</h2>
+                            <p className="text-white/50 mb-10 font-light">Let's configure your enterprise operating system parameters.</p>
+                            
+                            <div className="space-y-6">
+                                <div>
+                                    <label className="block text-[10px] font-mono tracking-widest text-white/50 uppercase mb-3">Enterprise Legal Name</label>
+                                    <div className="relative">
+                                        <Building className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+                                        <input 
+                                            type="text" 
+                                            value={companyName}
+                                            onChange={(e) => setCompanyName(e.target.value)}
+                                            className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--color-teal)] focus:ring-1 focus:ring-[var(--color-teal)] text-white placeholder:text-white/20 transition-all"
+                                            placeholder="e.g. Apex Logistics"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     )}
 
-                    <div className="mt-8 flex flex-col items-center">
-                        <div className="flex items-center gap-4 mb-4 w-80">
-                            <div className="h-[1px] flex-1 bg-white/10" />
-                            <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">Or</span>
-                            <div className="h-[1px] flex-1 bg-white/10" />
-                        </div>
+                    {step === 2 && (
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1">
+                            <h2 className="text-3xl font-display font-medium mb-3 text-white">L1: Business Design</h2>
+                            <p className="text-white/50 mb-10 font-light">What is the core value proposition of your enterprise?</p>
+                            <textarea 
+                                className="w-full h-40 p-5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--color-teal)] focus:ring-1 focus:ring-[var(--color-teal)] text-white placeholder:text-white/20 transition-all font-light resize-none leading-relaxed"
+                                placeholder="Describe what makes your business unique and structurally advantaged..."
+                            />
+                        </motion.div>
+                    )}
+
+                    {step === 3 && (
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1">
+                            <h2 className="text-3xl font-display font-medium mb-3 text-white">L2: Core Processes</h2>
+                            <p className="text-white/50 mb-10 font-light">List 1-3 primary processes that drive your operations.</p>
+                            <textarea 
+                                className="w-full h-40 p-5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[var(--color-teal)] focus:ring-1 focus:ring-[var(--color-teal)] text-white placeholder:text-white/20 transition-all font-light resize-none leading-relaxed"
+                                placeholder="e.g. 1. Order Fulfillment\n2. Inventory Management\n3. Client Onboarding"
+                            />
+                        </motion.div>
+                    )}
+
+                    {step === 4 && (
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex-1 flex flex-col items-center justify-center text-center">
+                            <div className="w-24 h-24 bg-[var(--color-teal)]/10 border border-[var(--color-teal)]/20 text-[var(--color-teal)] rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(26,107,138,0.3)]">
+                                <LayoutDashboard className="w-12 h-12" />
+                            </div>
+                            <h2 className="text-3xl font-display font-medium mb-4 text-white">Initializing OS Data</h2>
+                            <p className="text-white/50 max-w-sm font-light leading-relaxed">
+                                The ESRE AI Engine is calculating your baseline OS Performance Score based on your structural inputs.
+                            </p>
+                        </motion.div>
+                    )}
+
+                    <div className="mt-10 pt-8 border-t border-white/10 flex justify-between items-center">
+                        {step > 1 ? (
+                            <button 
+                                onClick={() => setStep(step - 1)}
+                                className="px-6 py-3 text-white/40 hover:text-white font-medium transition-colors"
+                            >
+                                Back
+                            </button>
+                        ) : <div />}
+                        
                         <button 
-                            onClick={() => router.push('/?demo=true')}
-                            className="flex items-center justify-center gap-2 w-80 py-4 rounded-xl text-sm font-medium text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
+                            onClick={handleNext}
+                            className={`px-8 py-3.5 rounded-xl font-medium transition-all flex items-center gap-3 ${
+                                step === 4 
+                                ? 'bg-[var(--color-lime)] text-[#050505] hover:bg-opacity-90 shadow-[0_0_20px_rgba(0,201,133,0.4)]' 
+                                : 'bg-white text-[#050505] hover:bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.2)]'
+                            }`}
                         >
-                            Explore Live Demo Environment
+                            {step === 4 ? 'Enter OS Dashboard' : 'Continue'} 
+                            {step < 4 && <ArrowRight className="w-4 h-4" />}
                         </button>
                     </div>
-                </motion.div>
 
+                </div>
             </div>
         </div>
     )

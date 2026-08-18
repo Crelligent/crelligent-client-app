@@ -104,14 +104,14 @@ export default function BenchmarksPage() {
                         {/* Critical Insight Alert */}
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
-                            className="bg-red-500/5 border border-red-500/20 rounded-[2rem] p-6 flex items-start gap-4"
+                            className="bg-[var(--color-red)]-500/5 border border-[var(--color-red)]-500/20 rounded-[2rem] p-6 flex items-start gap-4"
                         >
-                            <div className="p-3 bg-red-500/10 rounded-full shrink-0">
-                                <ShieldAlert className="w-6 h-6 text-red-400" />
+                            <div className="p-3 bg-[var(--color-red)]-500/10 rounded-full shrink-0">
+                                <ShieldAlert className="w-6 h-6 text-[var(--color-red)]-400" />
                             </div>
                             <div>
-                                <h4 className="text-red-400 font-medium mb-1">Critical Value Leakage Detected</h4>
-                                <p className="text-red-200/60 text-sm leading-relaxed">
+                                <h4 className="text-[var(--color-red)]-400 font-medium mb-1">Critical Value Leakage Detected</h4>
+                                <p className="text-[var(--color-red)]-200/60 text-sm leading-relaxed">
                                     Your Technology capability scores 43 points below the sector average. This constraint is directly causing your <strong className="text-white font-medium">Asset Downtime</strong> to be 2.4% higher than competitors, costing an estimated ₦14.2M per quarter.
                                 </p>
                             </div>

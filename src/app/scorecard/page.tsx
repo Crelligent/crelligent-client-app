@@ -43,13 +43,13 @@ const domains = [
 const getScoreColor = (score: number) => {
     if (score >= 70) return 'text-[#00B67A] bg-[#00B67A]'
     if (score >= 40) return 'text-yellow-400 bg-yellow-400'
-    return 'text-red-400 bg-red-400'
+    return 'text-[var(--color-red)]-400 bg-[var(--color-red)]-400'
 }
 
 const getScoreBg = (score: number) => {
     if (score >= 70) return 'bg-[#00B67A]/20'
     if (score >= 40) return 'bg-yellow-400/20'
-    return 'bg-red-400/20'
+    return 'bg-[var(--color-red)]-400/20'
 }
 
 export default function EsreScorecardPage() {
@@ -100,7 +100,7 @@ export default function EsreScorecardPage() {
                         <div className="relative z-10">
                             <div className="text-[10px] font-mono uppercase tracking-widest text-white/50 mb-4">Overall System Readiness</div>
                             <div className="flex items-baseline justify-center gap-2 mb-2">
-                                <span className={`text-6xl font-light ${overallScore >= 70 ? 'text-[#00B67A]' : overallScore >= 40 ? 'text-yellow-400' : 'text-red-400'}`}>
+                                <span className={`text-6xl font-light ${overallScore >= 70 ? 'text-[#00B67A]' : overallScore >= 40 ? 'text-yellow-400' : 'text-[var(--color-red)]-400'}`}>
                                     {overallScore}
                                 </span>
                                 <span className="text-xl text-white/30">/100</span>
@@ -166,7 +166,7 @@ export default function EsreScorecardPage() {
                                             <div className="w-full md:w-1/4 shrink-0">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <h3 className="text-sm font-medium text-white/90">{cap.name}</h3>
-                                                    {cap.delta > 0 ? <TrendingUp className="w-3 h-3 text-[#00B67A]" /> : cap.delta < 0 ? <TrendingDown className="w-3 h-3 text-red-400" /> : <TrendingUp className="w-3 h-3 text-white/20" />}
+                                                    {cap.delta > 0 ? <TrendingUp className="w-3 h-3 text-[#00B67A]" /> : cap.delta < 0 ? <TrendingDown className="w-3 h-3 text-[var(--color-red)]-400" /> : <TrendingUp className="w-3 h-3 text-white/20" />}
                                                 </div>
                                                 <div className="text-[10px] font-mono text-white/40">{cap.delta > 0 ? '+' : ''}{cap.delta} pts</div>
                                             </div>
@@ -188,7 +188,7 @@ export default function EsreScorecardPage() {
 
                                             {/* Status Badge & Expand Icon */}
                                             <div className="w-full md:w-1/4 shrink-0 flex items-center justify-between md:justify-end gap-4">
-                                                <span className={`px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border ${cap.score >= 70 ? 'border-[#00B67A]/30 text-[#00B67A] bg-[#00B67A]/10' : cap.score >= 40 ? 'border-yellow-400/30 text-yellow-400 bg-yellow-400/10' : 'border-red-400/30 text-red-400 bg-red-400/10'}`}>
+                                                <span className={`px-2 py-1 rounded text-[10px] font-mono uppercase tracking-widest border ${cap.score >= 70 ? 'border-[#00B67A]/30 text-[#00B67A] bg-[#00B67A]/10' : cap.score >= 40 ? 'border-yellow-400/30 text-yellow-400 bg-yellow-400/10' : 'border-[var(--color-red)]-400/30 text-[var(--color-red)]-400 bg-[var(--color-red)]-400/10'}`}>
                                                     {cap.status}
                                                 </span>
                                                 <div className="text-white/20 group-hover:text-white/60 transition-colors">

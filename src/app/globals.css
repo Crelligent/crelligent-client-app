@@ -3,11 +3,33 @@
 @theme {
   --color-background: #050505;
   --color-foreground: #ffffff;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Outfit', system-ui, sans-serif;
+  --color-navy: #0D1F3C;
+  --color-teal: #1A6B8A;
+  --color-green: #0F6E56;
+  --color-lime: #00C985;
+  --color-amber: #BA7517;
+  --color-red: #C0392B;
+  --color-purple: #534AB7;
+  --color-surface: #F5F8FC;
+  --color-border: #DDE6F0;
+  --color-muted: #6B7A90;
+  --color-terminal: #020817;
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
 :root {
+  --color-navy: #0D1F3C;
+  --color-surface: #F5F8FC;
+  --color-border: #DDE6F0;
+  --color-muted: #6B7A90;
+  --color-lime: #00C985;
+  --color-teal: #1A6B8A;
+  --color-red: #C0392B;
+  --color-purple: #534AB7;
+  --color-amber: #BA7517;
   --background: #050505;
   --foreground: #ffffff;
 }
@@ -95,3 +117,4 @@ body {
     width: 100% !important;
   }
 }
+

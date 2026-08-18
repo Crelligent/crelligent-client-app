@@ -35,7 +35,7 @@ export default function NotificationsPage() {
                             className="glass-card rounded-xl p-4 flex gap-4 hover:bg-white/[0.03] transition-colors cursor-pointer"
                         >
                             <div className="mt-0.5">
-                                {n.type === 'critical' && <AlertTriangle className="w-5 h-5 text-red-400" />}
+                                {n.type === 'critical' && <AlertTriangle className="w-5 h-5 text-[var(--color-red)]-400" />}
                                 {n.type === 'warning' && <AlertTriangle className="w-5 h-5 text-yellow-400" />}
                                 {n.type === 'info' && <Info className="w-5 h-5 text-[#38BDF8]" />}
                                 {n.type === 'success' && <CheckCircle2 className="w-5 h-5 text-[#00B67A]" />}

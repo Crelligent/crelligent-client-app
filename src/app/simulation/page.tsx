@@ -171,21 +171,21 @@ export default function SimulationLabPage() {
                                     <div className="grid grid-cols-3 gap-8 w-full">
                                         <div className="text-center p-4 rounded-xl bg-white/[0.02] border border-white/5">
                                             <div className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">Financial Delta</div>
-                                            <div className={`text-3xl font-light mb-1 ${results.financial >= 0 ? 'text-[#00B67A]' : 'text-red-400'}`}>
+                                            <div className={`text-3xl font-light mb-1 ${results.financial >= 0 ? 'text-[#00B67A]' : 'text-[var(--color-red)]-400'}`}>
                                                 {results.financial >= 0 ? '+' : '-'}₦{Math.abs(results.financial).toLocaleString()}
                                             </div>
                                             <div className="text-[10px] text-white/30">Monthly Projected Impact</div>
                                         </div>
                                         <div className="text-center p-4 rounded-xl bg-white/[0.02] border border-white/5">
                                             <div className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">Efficiency Delta</div>
-                                            <div className={`text-3xl font-light mb-1 ${results.efficiency >= 0 ? 'text-[#00B67A]' : 'text-red-400'}`}>
+                                            <div className={`text-3xl font-light mb-1 ${results.efficiency >= 0 ? 'text-[#00B67A]' : 'text-[var(--color-red)]-400'}`}>
                                                 {results.efficiency >= 0 ? '+' : '-'}{Math.abs(results.efficiency)} hrs
                                             </div>
                                             <div className="text-[10px] text-white/30">Systemic Latency Recovery</div>
                                         </div>
                                         <div className="text-center p-4 rounded-xl bg-white/[0.02] border border-white/5">
                                             <div className="text-xs font-mono uppercase tracking-widest text-white/50 mb-4">Friction Delta</div>
-                                            <div className={`text-3xl font-light mb-1 ${results.friction <= 0 ? 'text-[#00B67A]' : 'text-red-400'}`}>
+                                            <div className={`text-3xl font-light mb-1 ${results.friction <= 0 ? 'text-[#00B67A]' : 'text-[var(--color-red)]-400'}`}>
                                                 {results.friction <= 0 ? '' : '+'}{results.friction}%
                                             </div>
                                             <div className="text-[10px] text-white/30">System-Wide Resistance</div>
